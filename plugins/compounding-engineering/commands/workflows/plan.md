@@ -378,16 +378,47 @@ After writing the plan file, use the **AskUserQuestion tool** to present these o
 **Options:**
 1. **Start `/work`** - Begin implementing this plan
 2. **Run `/plan_review`** - Get feedback from reviewers (DHH, Kieran, Simplicity)
-3. **Simplify** - Reduce detail level
-4. **Rework** - Change approach or request specific changes
+3. **Create Issue** - Create issue in project tracker (GitHub/Linear)
+4. **Simplify** - Reduce detail level
+5. **Rework** - Change approach or request specific changes
 
 Based on selection:
 - **`/work`** → Call the /work command with the plan file path
 - **`/plan_review`** → Call the /plan_review command with the plan file path
+- **Create Issue** → See "Issue Creation" section below
 - **Simplify** → Ask "What should I simplify?" then regenerate simpler version
 - **Rework** → Ask "What would you like changed?" then regenerate with changes
 - **Other** (automatically provided) → Accept free text, act on it
 
 Loop back to options after Simplify/Rework until user selects `/work` or `/plan_review`.
+
+## Issue Creation
+
+When user selects "Create Issue", detect their project tracker from CLAUDE.md:
+
+1. **Check for tracker preference** in user's CLAUDE.md (global or project):
+   - Look for `project_tracker: github` or `project_tracker: linear`
+   - Or look for mentions of "GitHub Issues" or "Linear" in their workflow section
+
+2. **If GitHub:**
+   ```bash
+   # Extract title from plan filename (kebab-case to Title Case)
+   # Read plan content for body
+   gh issue create --title "feat: [Plan Title]" --body-file plans/<issue_title>.md
+   ```
+
+3. **If Linear:**
+   ```bash
+   # Use linear CLI if available, or provide instructions
+   # linear issue create --title "[Plan Title]" --description "$(cat plans/<issue_title>.md)"
+   ```
+
+4. **If no tracker configured:**
+   Ask user: "Which project tracker do you use? (GitHub/Linear/Other)"
+   - Suggest adding `project_tracker: github` or `project_tracker: linear` to their CLAUDE.md
+
+5. **After creation:**
+   - Display the issue URL
+   - Ask if they want to proceed to `/work` or `/plan_review`
 
 NEVER CODE! Just research and write the plan.

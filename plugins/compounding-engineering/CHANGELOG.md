@@ -5,6 +5,12 @@ All notable changes to the compounding-engineering plugin will be documented in 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.1] - 2025-11-27
+
+### Added
+
+- **`/plan` command** - Added "Create Issue" option to post-generation menu. Detects project tracker (GitHub or Linear) from user's CLAUDE.md (`project_tracker: github` or `project_tracker: linear`) and creates issues using `gh issue create` or Linear CLI.
+
 ## [2.8.0] - 2025-11-27
 
 ### Added
