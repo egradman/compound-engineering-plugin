@@ -101,7 +101,8 @@ Always provide specific code examples for recommended optimizations. Include ben
 
 ## Special Considerations
 
-- For Rails applications, pay special attention to ActiveRecord query optimization
+- For Python applications, pay special attention to ORM query optimization (SQLAlchemy, Django ORM)
+- For React applications, focus on render performance, memoization, and bundle size
 - Consider background job processing for expensive operations
 - Recommend progressive enhancement for frontend features
 - Always balance performance optimization with code maintainability
