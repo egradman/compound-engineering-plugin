@@ -17,7 +17,7 @@
         "name": "Eric Gradman",
         "email": "eric@gradman.com"
       },
-      "tags": ["ai-powered", "compound-engineering", "workflow-automation", "code-review", "python", "typescript", "react", "quality", "knowledge-management", "image-generation"],
+      "tags": ["ai-powered", "engineering", "workflow-automation", "code-review", "python", "typescript", "react", "quality", "knowledge-management", "image-generation"],
       "source": "./plugins/engineering"
     },
     {
@@ -27,7 +27,7 @@
       "author": {
         "name": "Nityesh Agarwal"
       },
-      "homepage": "https://github.com/EveryInc/compound-engineering-plugin",
+      "homepage": "https://github.com/egradman/engineering",
       "tags": ["coding", "programming", "tutorial", "learning", "spaced-repetition", "education"],
       "source": "./plugins/coding-tutor"
     }
