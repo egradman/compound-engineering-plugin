@@ -93,7 +93,7 @@ bash ${CLAUDE_PLUGIN_ROOT}/skills/git-worktree/scripts/worktree-manager.sh creat
 **What happens:**
 1. Checks if worktree already exists
 2. Updates the base branch from remote
-3. Creates new worktree and branch
+3. Creates new worktree and branch — if the branch name contains slashes, the directory uses only the last segment (e.g., `feat/my-feature` → `.worktrees/my-feature`)
 4. **Copies all .env files from main repo** (.env, .env.local, .env.test, etc.)
 5. Shows path for cd-ing to the worktree
 
@@ -192,7 +192,7 @@ bash ${CLAUDE_PLUGIN_ROOT}/skills/git-worktree/scripts/worktree-manager.sh clean
 
 - Worktrees always created from **main** (unless specified)
 - Worktrees stored in **.worktrees/** directory
-- Branch name becomes worktree name
+- Branch names with slashes are stripped to the last segment for the directory name (e.g., `feat/my-feature` → `.worktrees/my-feature`)
 - **.gitignore** automatically managed
 
 ### Safety First

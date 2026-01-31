@@ -47,6 +47,8 @@ Ask questions **one at a time** to understand the user's intent. Avoid overwhelm
 
 **Question Techniques:**
 
+0. **Prefer AskUserQuestionsTool** when appropriate
+  
 1. **Prefer multiple choice when natural options exist**
    - Good: "Should the notification be: (a) email only, (b) in-app only, or (c) both?"
    - Avoid: "How should users be notified?"
