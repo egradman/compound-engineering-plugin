@@ -10,15 +10,15 @@
   },
   "plugins": [
     {
-      "name": "compound-engineering",
-      "description": "AI-powered development tools that get smarter with every use. Make each unit of engineering work easier than the last. Includes 22 specialized agents, 11 commands, and 11 skills.",
+      "name": "engineering",
+      "description": "AI-powered development tools that get smarter with every use. Make each unit of engineering work easier than the last.",
       "version": "3.0.0",
       "author": {
         "name": "Eric Gradman",
         "email": "eric@gradman.com"
       },
       "tags": ["ai-powered", "compound-engineering", "workflow-automation", "code-review", "python", "typescript", "react", "quality", "knowledge-management", "image-generation"],
-      "source": "./plugins/compound-engineering"
+      "source": "./plugins/engineering"
     },
     {
       "name": "coding-tutor",
