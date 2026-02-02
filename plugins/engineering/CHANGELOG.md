@@ -26,9 +26,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Merged PRs
 
-- [#102](https://github.com/EveryInc/compound-engineering-plugin/pull/102) feat(research): add mandatory API deprecation validation
-- [#101](https://github.com/EveryInc/compound-engineering-plugin/pull/101) feat: Add /workflows:brainstorm command and skill
-- [#100](https://github.com/EveryInc/compound-engineering-plugin/pull/100) feat(workflows:plan): Add smart research decision logic
+- [#102](https://github.com/egradman/compound-engineering-plugin/pull/102) feat(research): add mandatory API deprecation validation
+- [#101](https://github.com/egradman/compound-engineering-plugin/pull/101) feat: Add /workflows:brainstorm command and skill
+- [#100](https://github.com/egradman/compound-engineering-plugin/pull/100) feat(workflows:plan): Add smart research decision logic
 
 ### Contributors
 
@@ -335,7 +335,7 @@ Note: This pattern is specifically for agent-native apps following the "whatever
 
 ### Enhanced
 
-- **`agent-native-architecture` skill** - Major expansion based on real-world learnings from building the Every Reader iOS app. Added 5 new reference documents and expanded existing ones:
+- **`agent-native-architecture` skill** - Major expansion based on real-world learnings from building the egradman Reader iOS app. Added 5 new reference documents and expanded existing ones:
 
   **New References:**
   - **dynamic-context-injection.md** - How to inject runtime app state into agent system prompts. Covers context injection patterns, what context to inject (resources, activity, capabilities, vocabulary), implementation patterns for Swift/iOS and TypeScript, and context freshness.
@@ -378,7 +378,7 @@ These updates operationalize a key insight from building agent-native mobile app
 - **All skills** - Fixed spec compliance issues across 12 skills:
   - Reference files now use proper markdown links (`[file.md](./references/file.md)`) instead of backtick text
   - Descriptions now use third person ("This skill should be used when...") per skill-creator spec
-  - Affected skills: agent-native-architecture, andrew-kane-gem-writer, compound-docs, create-agent-skills, dhh-rails-style, dspy-ruby, every-style-editor, file-todos, frontend-design, gemini-imagegen
+  - Affected skills: agent-native-architecture, andrew-kane-gem-writer, compound-docs, create-agent-skills, dhh-rails-style, dspy-ruby, egradman-style-editor, file-todos, frontend-design, gemini-imagegen
 
 ### Added
 

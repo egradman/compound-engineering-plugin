@@ -473,9 +473,9 @@ tool("write_file", { path, content }) {
 </security_considerations>
 
 <examples>
-## Real-World Example: Every Reader
+## Real-World Example: egradman Reader
 
-The Every Reader app uses shared workspace for research:
+The egradman Reader app uses shared workspace for research:
 
 ```
 Documents/

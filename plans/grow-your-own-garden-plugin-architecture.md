@@ -87,7 +87,7 @@ plugin/agents/        → From installed plugins
 - Python: kieran-python (1)
 - TypeScript: kieran-typescript (1)
 - Frontend: julik-races, design-iterator, design-reviewer, figma-sync (4)
-- Editorial: every-style-editor (1)
+- Editorial: egradman-style-editor (1)
 
 ## Key Constraint
 
