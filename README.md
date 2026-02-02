@@ -1,14 +1,13 @@
 # Compound Marketplace
 
-[![Build Status](https://github.com/EveryInc/compound-engineering-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/EveryInc/compound-engineering-plugin/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@every-env/compound-plugin)](https://www.npmjs.com/package/@every-env/compound-plugin)
+[![Build Status](https://github.com/egradman/engineering/actions/workflows/ci.yml/badge.svg)](https://github.com/egradman/engineering/actions/workflows/ci.yml)
 
 A Claude Code plugin marketplace featuring the **Compound Engineering Plugin** — tools that make each unit of engineering work easier than the last.
 
 ## Claude Code Install
 
 ```bash
-/plugin marketplace add https://github.com/EveryInc/compound-engineering-plugin
+/plugin marketplace add https://github.com/egradman/engineering
 /plugin install compound-engineering
 ```
 
@@ -18,10 +17,10 @@ This repo includes a Bun/TypeScript CLI that converts Claude Code plugins to Ope
 
 ```bash
 # convert the compound-engineering plugin into OpenCode format
-bunx @every-env/compound-plugin install compound-engineering --to opencode
+bunx @egradman/compound-plugin install compound-engineering --to opencode
 
 # convert to Codex format
-bunx @every-env/compound-plugin install compound-engineering --to codex
+bunx @egradman/compound-plugin install compound-engineering --to codex
 ```
 
 Local dev:
@@ -63,6 +62,4 @@ Compound engineering inverts this. 80% is in planning and review, 20% is in exec
 
 ## Learn More
 
-- [Full component reference](plugins/compound-engineering/README.md) - all agents, commands, skills
-- [Compound engineering: how Every codes with agents](https://every.to/chain-of-thought/compound-engineering-how-every-codes-with-agents)
-- [The story behind compounding engineering](https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it)
+- [Full component reference](plugins/engineering/README.md) - all agents, commands, skills
