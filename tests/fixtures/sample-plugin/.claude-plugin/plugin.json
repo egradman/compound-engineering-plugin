@@ -4,11 +4,11 @@
   "description": "Fixture aligned with the Compound Engineering plugin",
   "author": {
     "name": "Kieran Klaassen",
-    "email": "kieran@every.to",
-    "url": "https://github.com/kieranklaassen"
+    "email": "eric@gradman.com",
+    "url": "https://github.com/egradman"
   },
-  "homepage": "https://every.to/source-code/my-ai-had-already-fixed-the-code-before-i-saw-it",
-  "repository": "https://github.com/EveryInc/compound-engineering-plugin",
+  "homepage": "https://github.com/egradman/engineering",
+  "repository": "https://github.com/egradman/engineering",
   "license": "MIT",
   "keywords": [
     "compound-engineering",
