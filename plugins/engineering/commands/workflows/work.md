@@ -178,16 +178,14 @@ This command takes a work document (plan, specification, or todo file) and execu
    Use for complex, risky, or large changes:
 
    - **code-simplicity-reviewer**: Check for unnecessary complexity
-   - **kieran-rails-reviewer**: Verify Rails conventions (Rails projects)
    - **performance-oracle**: Check for performance issues
    - **security-sentinel**: Scan for security vulnerabilities
-   - **cora-test-reviewer**: Review test quality (Rails projects with comprehensive test coverage)
 
    Run reviewers in parallel with Task tool:
 
    ```
    Task(code-simplicity-reviewer): "Review changes for simplicity"
-   Task(kieran-rails-reviewer): "Check Rails conventions"
+   Task(performance-oracle): "Check Rails conventions"
    ```
 
    Present findings to user and address critical issues.
@@ -221,74 +219,6 @@ This command takes a work document (plan, specification, or todo file) and execu
    EOF
    )"
    ```
-
-2. **Capture and Upload Screenshots for UI Changes** (REQUIRED for any UI work)
-
-   For **any** design changes, new views, or UI modifications, you MUST capture and upload screenshots:
-
-   **Step 1: Start dev server** (if not running)
-   ```bash
-   bin/dev  # Run in background
-   ```
-
-   **Step 2: Capture screenshots with agent-browser CLI**
-   ```bash
-   agent-browser open http://localhost:3000/[route]
-   agent-browser snapshot -i
-   agent-browser screenshot output.png
-   ```
-   See the `agent-browser` skill for detailed usage.
-
-   **Step 3: Upload using imgup skill**
-   ```bash
-   skill: imgup
-   # Then upload each screenshot:
-   imgup -h pixhost screenshot.png  # pixhost works without API key
-   # Alternative hosts: catbox, imagebin, beeimg
-   ```
-
-   **What to capture:**
-   - **New screens**: Screenshot of the new UI
-   - **Modified screens**: Before AND after screenshots
-   - **Design implementation**: Screenshot showing Figma design match
-
-   **IMPORTANT**: Always include uploaded image URLs in PR description. This provides visual context for reviewers and documents the change.
-
-3. **Create Pull Request**
-
-   ```bash
-   git push -u origin feature-branch-name
-
-   gh pr create --title "Feature: [Description]" --body "$(cat <<'EOF'
-   ## Summary
-   - What was built
-   - Why it was needed
-   - Key decisions made
-
-   ## Testing
-   - Tests added/modified
-   - Manual testing performed
-
-   ## Before / After Screenshots
-   | Before | After |
-   |--------|-------|
-   | ![before](URL) | ![after](URL) |
-
-   ## Figma Design
-   [Link if applicable]
-
-   ---
-
-   🤖 Generated with [Claude Code](https://claude.com/claude-code)
-   EOF
-   )"
-   ```
-
-4. **Notify User**
-   - Summarize what was completed
-   - Link to PR
-   - Note any follow-up work needed
-   - Suggest next steps if applicable
 
 ---
 
