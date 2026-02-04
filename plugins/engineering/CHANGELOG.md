@@ -5,6 +5,18 @@ All notable changes to the engineering plugin will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2026-02-02
+
+### Added
+
+- **`docker-traefik` skill** - Routes worktree Docker Compose services via `{worktree_name}.localhost` using a shared Traefik reverse proxy. Includes manager script for starting/stopping Traefik and per-worktree services with automatic label injection and network configuration.
+
+### Summary
+
+- 22 agents, 13 commands, 14 skills, 1 MCP server
+
+---
+
 ## [3.0.1] - 2026-01-31
 
 ### Fixed
@@ -26,9 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Merged PRs
 
-- [#102](https://github.com/EveryInc/compound-engineering-plugin/pull/102) feat(research): add mandatory API deprecation validation
-- [#101](https://github.com/EveryInc/compound-engineering-plugin/pull/101) feat: Add /workflows:brainstorm command and skill
-- [#100](https://github.com/EveryInc/compound-engineering-plugin/pull/100) feat(workflows:plan): Add smart research decision logic
+- [#102](https://github.com/egradman/engineering/pull/102) feat(research): add mandatory API deprecation validation
+- [#101](https://github.com/egradman/engineering/pull/101) feat: Add /workflows:brainstorm command and skill
+- [#100](https://github.com/egradman/engineering/pull/100) feat(workflows:plan): Add smart research decision logic
 
 ### Contributors
 
