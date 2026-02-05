@@ -31,7 +31,7 @@
     "bun-types": "^1.0.0"
   },
   "pi": {
-    "skills": ["./plugins/engineering/skills"],
+    "skills": ["./plugins/engineering/skills", "./pi-skills"],
     "extensions": ["./extensions"],
     "prompts": [
       "./plugins/engineering/agents",
