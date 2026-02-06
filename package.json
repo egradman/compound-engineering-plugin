@@ -25,14 +25,19 @@
   },
   "dependencies": {
     "citty": "^0.1.6",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
   },
   "devDependencies": {
     "bun-types": "^1.0.0"
   },
   "pi": {
-    "skills": ["./plugins/engineering/skills", "./pi-skills"],
-    "extensions": ["./extensions"],
+    "skills": [
+      "./plugins/engineering/skills",
+      "./pi-skills"
+    ],
+    "extensions": [
+      "./extensions"
+    ],
     "prompts": [
       "./plugins/engineering/agents",
       "./plugins/engineering/commands"
