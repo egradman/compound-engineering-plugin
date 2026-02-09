@@ -16,9 +16,11 @@
 
 ### Pre-Commit Checklist
 
+**CRITICAL**: Every commit and push MUST bump the version in `.claude-plugin/plugin.json`. No exceptions.
+
 Before committing ANY changes:
 
-- [ ] Version bumped in `.claude-plugin/plugin.json`
+- [ ] **Version bumped in `.claude-plugin/plugin.json`** (required for every commit)
 - [ ] CHANGELOG.md updated with changes
 - [ ] README.md component counts verified
 - [ ] README.md tables accurate (agents, commands, skills)

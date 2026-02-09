@@ -1,12 +1,12 @@
 ---
 name: xcode-test
-description: Build and test iOS apps on simulator using XcodeBuildMCP
+description: Build and test iOS apps on simulator using XcodeBuildMCP CLI
 argument-hint: "[scheme name or 'current' to use default]"
 ---
 
 # Xcode Test Command
 
-<command_purpose>Build, install, and test iOS apps on the simulator using XcodeBuildMCP. Captures screenshots, logs, and verifies app behavior.</command_purpose>
+<command_purpose>Build, install, and test iOS apps on the simulator using XcodeBuildMCP CLI. Captures screenshots, logs, and verifies app behavior.</command_purpose>
 
 ## Introduction
 
@@ -23,55 +23,54 @@ This command tests iOS/macOS apps by:
 
 <requirements>
 - Xcode installed with command-line tools
-- XcodeBuildMCP server connected
+- XcodeBuildMCP CLI installed (`npm install -g xcodebuildmcp` or `npx xcodebuildmcp@latest`)
 - Valid Xcode project or workspace
 - At least one iOS Simulator available
 </requirements>
 
 ## Main Tasks
 
-### 0. Verify XcodeBuildMCP is Installed
+### 0. Verify XcodeBuildMCP CLI is Installed
 
-<check_mcp_installed>
+<check_cli_installed>
 
-**First, check if XcodeBuildMCP tools are available.**
+**First, check if XcodeBuildMCP CLI is available.**
 
 Try calling:
-```
-mcp__xcodebuildmcp__list_simulators({})
+```bash
+xcodebuildmcp --help
 ```
 
-**If the tool is not found or errors:**
+**If the command is not found:**
 
 Tell the user:
 ```markdown
-**XcodeBuildMCP not installed**
+**XcodeBuildMCP CLI not installed**
 
-Please install the XcodeBuildMCP server first:
-
+Install it:
 \`\`\`bash
-claude mcp add XcodeBuildMCP -- npx xcodebuildmcp@latest
+npm install -g xcodebuildmcp
 \`\`\`
 
-Then restart Claude Code and run `/xcode-test` again.
+Then run `/xcode-test` again.
 ```
 
-**Do NOT proceed** until XcodeBuildMCP is confirmed working.
+**Do NOT proceed** until the command works.
 
-</check_mcp_installed>
+</check_cli_installed>
 
 ### 1. Discover Project and Scheme
 
 <discover_project>
 
 **Find available projects:**
-```
-mcp__xcodebuildmcp__discover_projs({})
+```bash
+xcodebuildmcp simulator discover-projs --workspace-root .
 ```
 
 **List schemes for the project:**
-```
-mcp__xcodebuildmcp__list_schemes({ project_path: "/path/to/Project.xcodeproj" })
+```bash
+xcodebuildmcp simulator list-schemes --project-path ./Project.xcodeproj
 ```
 
 **If argument provided:**
@@ -85,17 +84,17 @@ mcp__xcodebuildmcp__list_schemes({ project_path: "/path/to/Project.xcodeproj" })
 <boot_simulator>
 
 **List available simulators:**
-```
-mcp__xcodebuildmcp__list_simulators({})
+```bash
+xcodebuildmcp simulator list-sims
 ```
 
-**Boot preferred simulator (iPhone 15 Pro recommended):**
-```
-mcp__xcodebuildmcp__boot_simulator({ simulator_id: "[uuid]" })
+**Build, install, and run in one step (preferred):**
+```bash
+xcodebuildmcp simulator build-run-sim --scheme [scheme_name] --project-path ./Project.xcodeproj --simulator-name "iPhone 17 Pro"
 ```
 
 **Wait for simulator to be ready:**
-Check simulator state before proceeding with installation.
+Check simulator state before proceeding with testing.
 
 </boot_simulator>
 
@@ -104,11 +103,8 @@ Check simulator state before proceeding with installation.
 <build_app>
 
 **Build for iOS Simulator:**
-```
-mcp__xcodebuildmcp__build_ios_sim_app({
-  project_path: "/path/to/Project.xcodeproj",
-  scheme: "[scheme_name]"
-})
+```bash
+xcodebuildmcp simulator build-sim --scheme [scheme_name] --project-path ./Project.xcodeproj --simulator-name "iPhone 17 Pro"
 ```
 
 **Handle build failures:**
@@ -126,28 +122,14 @@ mcp__xcodebuildmcp__build_ios_sim_app({
 
 <install_launch>
 
-**Install app on simulator:**
-```
-mcp__xcodebuildmcp__install_app_on_simulator({
-  app_path: "/path/to/built/App.app",
-  simulator_id: "[uuid]"
-})
-```
-
-**Launch the app:**
-```
-mcp__xcodebuildmcp__launch_app_on_simulator({
-  bundle_id: "[app.bundle.id]",
-  simulator_id: "[uuid]"
-})
+**Build, install, and launch in one command:**
+```bash
+xcodebuildmcp simulator build-run-sim --scheme [scheme_name] --project-path ./Project.xcodeproj --simulator-name "iPhone 17 Pro"
 ```
 
 **Start capturing logs:**
-```
-mcp__xcodebuildmcp__capture_sim_logs({
-  simulator_id: "[uuid]",
-  bundle_id: "[app.bundle.id]"
-})
+```bash
+xcodebuildmcp logging start-sim-log-cap --simulator-id [uuid] --bundle-id [app.bundle.id]
 ```
 
 </install_launch>
@@ -159,11 +141,8 @@ mcp__xcodebuildmcp__capture_sim_logs({
 For each key screen in the app:
 
 **Take screenshot:**
-```
-mcp__xcodebuildmcp__take_screenshot({
-  simulator_id: "[uuid]",
-  filename: "screen-[name].png"
-})
+```bash
+xcodebuildmcp ui-automation screenshot --simulator-id [uuid] --return-format path
 ```
 
 **Review screenshot for:**
@@ -172,9 +151,15 @@ mcp__xcodebuildmcp__take_screenshot({
 - Expected content displayed
 - Layout looks correct
 
-**Check logs for errors:**
+**Snapshot UI for interaction:**
+```bash
+xcodebuildmcp ui-automation snapshot-ui --simulator-id [uuid]
 ```
-mcp__xcodebuildmcp__get_sim_logs({ simulator_id: "[uuid]" })
+
+**Interact with UI elements:**
+```bash
+xcodebuildmcp ui-automation tap --simulator-id [uuid] --x [x] --y [y]
+xcodebuildmcp ui-automation type-text --simulator-id [uuid] --text "[input]"
 ```
 
 Look for:
@@ -256,29 +241,29 @@ When a test fails:
 After all tests complete, present summary:
 
 ```markdown
-## 📱 Xcode Test Results
+## Xcode Test Results
 
 **Project:** [project name]
 **Scheme:** [scheme name]
 **Simulator:** [simulator name]
 
-### Build: ✅ Success / ❌ Failed
+### Build: Pass / Fail
 
 ### Screens Tested: [count]
 
 | Screen | Status | Notes |
 |--------|--------|-------|
-| Launch | ✅ Pass | |
-| Home | ✅ Pass | |
-| Settings | ❌ Fail | Crash on tap |
-| Profile | ⏭️ Skip | Requires login |
+| Launch | Pass | |
+| Home | Pass | |
+| Settings | Fail | Crash on tap |
+| Profile | Skip | Requires login |
 
 ### Console Errors: [count]
 - [List any errors found]
 
 ### Human Verifications: [count]
-- Sign in with Apple: ✅ Confirmed
-- Push notifications: ✅ Confirmed
+- Sign in with Apple: Confirmed
+- Push notifications: Confirmed
 
 ### Failures: [count]
 - Settings screen - crash on navigation
@@ -298,13 +283,13 @@ After all tests complete, present summary:
 After testing:
 
 **Stop log capture:**
-```
-mcp__xcodebuildmcp__stop_log_capture({ simulator_id: "[uuid]" })
+```bash
+xcodebuildmcp logging stop-sim-log-cap --log-session-id [session_id]
 ```
 
-**Optionally shut down simulator:**
-```
-mcp__xcodebuildmcp__shutdown_simulator({ simulator_id: "[uuid]" })
+**Check daemon status if needed:**
+```bash
+xcodebuildmcp daemon status
 ```
 
 </cleanup>

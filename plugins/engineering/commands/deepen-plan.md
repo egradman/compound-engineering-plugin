@@ -283,12 +283,12 @@ Find:
 Return concrete, actionable recommendations."
 ```
 
-**Also use Context7 MCP for framework documentation:**
+**Also use Context7 via MCPorter for framework documentation:**
 
 For any technologies/frameworks mentioned in the plan, query Context7:
-```
-mcp__plugin_engineering_context7__resolve-library-id: Find library ID for [framework]
-mcp__plugin_engineering_context7__query-docs: Query documentation for specific patterns
+```bash
+npx mcporter call --http-url https://mcp.context7.com/mcp resolve-library-id libraryName:[framework]
+npx mcporter call --http-url https://mcp.context7.com/mcp query-docs libraryId:[library-id] query:[specific patterns]
 ```
 
 **Use WebSearch for current best practices:**

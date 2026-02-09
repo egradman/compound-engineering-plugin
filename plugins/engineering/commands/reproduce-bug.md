@@ -21,15 +21,15 @@ Run the agents again to find any logs that could help us reproduce the bug.
 
 Keep running these agents until you have a good idea of what is going on.
 
-## Phase 2: Visual Reproduction with Playwright
+## Phase 2: Visual Reproduction with agent-browser
 
-If the bug is UI-related or involves user flows, use Playwright to visually reproduce it:
+If the bug is UI-related or involves user flows, use agent-browser to visually reproduce it:
 
 ### Step 1: Verify Server is Running
 
-```
-mcp__plugin_engineering_pw__browser_navigate({ url: "http://localhost:3000" })
-mcp__plugin_engineering_pw__browser_snapshot({})
+```bash
+agent-browser open http://localhost:3000
+agent-browser snapshot -i
 ```
 
 If server not running, inform user to start `bin/dev`.
@@ -38,17 +38,17 @@ If server not running, inform user to start `bin/dev`.
 
 Based on the issue description, navigate to the relevant page:
 
-```
-mcp__plugin_engineering_pw__browser_navigate({ url: "http://localhost:3000/[affected_route]" })
-mcp__plugin_engineering_pw__browser_snapshot({})
+```bash
+agent-browser open http://localhost:3000/[affected_route]
+agent-browser snapshot -i
 ```
 
 ### Step 3: Capture Screenshots
 
 Take screenshots at each step of reproducing the bug:
 
-```
-mcp__plugin_engineering_pw__browser_take_screenshot({ filename: "bug-[issue]-step-1.png" })
+```bash
+agent-browser screenshot bug-[issue]-step-1.png
 ```
 
 ### Step 4: Follow User Flow
@@ -56,27 +56,23 @@ mcp__plugin_engineering_pw__browser_take_screenshot({ filename: "bug-[issue]-ste
 Reproduce the exact steps from the issue:
 
 1. **Read the issue's reproduction steps**
-2. **Execute each step using Playwright:**
-   - `browser_click` for clicking elements
-   - `browser_type` for filling forms
-   - `browser_snapshot` to see the current state
-   - `browser_take_screenshot` to capture evidence
+2. **Execute each step using agent-browser:**
+   - `agent-browser click @ref` for clicking elements
+   - `agent-browser fill @ref "text"` for filling forms
+   - `agent-browser snapshot -i` to see the current state
+   - `agent-browser screenshot file.png` to capture evidence
 
-3. **Check for console errors:**
-   ```
-   mcp__plugin_engineering_pw__browser_console_messages({ level: "error" })
-   ```
+3. **Re-snapshot after each interaction** to get updated refs.
 
 ### Step 5: Capture Bug State
 
 When you reproduce the bug:
 
 1. Take a screenshot of the bug state
-2. Capture console errors
-3. Document the exact steps that triggered it
+2. Document the exact steps that triggered it
 
-```
-mcp__plugin_engineering_pw__browser_take_screenshot({ filename: "bug-[issue]-reproduced.png" })
+```bash
+agent-browser screenshot bug-[issue]-reproduced.png
 ```
 
 ## Phase 3: Document Findings

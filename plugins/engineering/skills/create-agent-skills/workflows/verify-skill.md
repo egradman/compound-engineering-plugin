@@ -82,10 +82,10 @@ which {tool-name}
 ```
 
 ### For API/Service Skills
-Use Context7 to fetch current documentation:
-```
-mcp__context7__resolve-library-id: {service-name}
-mcp__context7__get-library-docs: {library-id}, topic: {relevant-topic}
+Use Context7 via MCPorter to fetch current documentation:
+```bash
+npx mcporter call --http-url https://mcp.context7.com/mcp resolve-library-id libraryName:{service-name}
+npx mcporter call --http-url https://mcp.context7.com/mcp query-docs libraryId:{library-id} query:{relevant-topic}
 ```
 
 Compare skill's documented patterns against current docs:
@@ -94,10 +94,10 @@ Compare skill's documented patterns against current docs:
 - Are there deprecated methods being used?
 
 ### For Framework Skills
-Use Context7:
-```
-mcp__context7__resolve-library-id: {framework-name}
-mcp__context7__get-library-docs: {library-id}, topic: {specific-api}
+Use Context7 via MCPorter:
+```bash
+npx mcporter call --http-url https://mcp.context7.com/mcp resolve-library-id libraryName:{framework-name}
+npx mcporter call --http-url https://mcp.context7.com/mcp query-docs libraryId:{library-id} query:{specific-api}
 ```
 
 Check:
@@ -181,10 +181,10 @@ Based on skill type, recommend:
 which {tool} && {tool} --version
 ```
 
-**Context7 pattern for any library:**
-```
-1. resolve-library-id: "{library-name}"
-2. get-library-docs: "{id}", topic: "{specific-feature}"
+**Context7 pattern for any library (via MCPorter):**
+```bash
+npx mcporter call --http-url https://mcp.context7.com/mcp resolve-library-id libraryName:"{library-name}"
+npx mcporter call --http-url https://mcp.context7.com/mcp query-docs libraryId:"{id}" query:"{specific-feature}"
 ```
 
 **WebSearch patterns:**

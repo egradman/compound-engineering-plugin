@@ -134,10 +134,10 @@ For EACH major library/tool/pattern found:
 
 ### Documentation Sources
 
-Use Context7 MCP when available:
-```
-mcp__context7__resolve-library-id: {library-name}
-mcp__context7__get-library-docs: {library-id}
+Use Context7 via MCPorter when available:
+```bash
+npx mcporter call --http-url https://mcp.context7.com/mcp resolve-library-id libraryName:{library-name}
+npx mcporter call --http-url https://mcp.context7.com/mcp query-docs libraryId:{library-id} query:{topic}
 ```
 
 Focus on official docs, not tutorials.
